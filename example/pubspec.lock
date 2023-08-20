@@ -104,6 +104,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  light_logger:
+    dependency: transitive
+    description:
+      name: light_logger
+      sha256: e4d1ed16750a41e20d87b6feb367d6fd96d0dffac6dc4b6a76f685b3d79de56f
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.3"
   lints:
     dependency: transitive
     description:

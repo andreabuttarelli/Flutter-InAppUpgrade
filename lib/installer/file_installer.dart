@@ -1,4 +1,3 @@
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
@@ -10,7 +9,6 @@ import 'package:upgrade/utils/default_file_location.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class FileInstallerInitializer extends InstallInitializer {
-
   @override
   String get identifier => "file";
 
@@ -25,11 +23,9 @@ class FileInstallerInitializer extends InstallInitializer {
       closeOnInstalling: data['close_on_installing'] ?? true,
     );
   }
-
 }
 
 class FileInstaller extends Installer {
-
   String fileURL;
   bool closeOnInstalling;
   String? filePath;
@@ -63,7 +59,8 @@ class FileInstaller extends Installer {
     var contentLength = 0;
 
     try {
-      final StreamedResponse response = await Client().send(Request('GET', uri));
+      final StreamedResponse response =
+          await Client().send(Request('GET', uri));
       contentLength = response.contentLength ?? 1;
 
       file ??= await defaultFileLocation(uri.pathSegments.last);
@@ -89,10 +86,13 @@ class FileInstaller extends Installer {
 
   @override
   Future<bool> install() async {
-    if (!state.currentStatusIs(status: UpgradeStatus.readyToInstall)) { return false; }
+    if (!state.currentStatusIs(status: UpgradeStatus.readyToInstall)) {
+      return false;
+    }
     if (filePath == null) {
       state.updateUpgradeStatus(status: UpgradeStatus.error);
-      debugPrint("[UpgradeManager:FileInstaller] Install file doesn't exists at $filePath.");
+      debugPrint(
+          "[UpgradeManager:FileInstaller] Install file doesn't exists at $filePath.");
       return false;
     }
 
@@ -101,20 +101,19 @@ class FileInstaller extends Installer {
     final file = File(filePath!);
     if (!file.existsSync()) {
       state.updateUpgradeStatus(status: UpgradeStatus.error);
-      debugPrint("[UpgradeManager.FileInstaller] Install file does not exists, you should download it first.");
+      debugPrint(
+          "[UpgradeManager.FileInstaller] Install file does not exists, you should download it first.");
       return false;
     }
 
     final uri = Uri(path: file.absolute.path, scheme: 'file');
     if (!await canLaunchUrl(uri)) {
       state.updateUpgradeStatus(status: UpgradeStatus.error);
-      debugPrint("[UpgradeManager:FileInstaller] Cannot install the file at ${uri.path}.");
+      debugPrint(
+          "[UpgradeManager:FileInstaller] Cannot install the file at ${uri.path}.");
       return false;
     }
     await launchUrl(uri);
-
     return true;
   }
-
-
 }
