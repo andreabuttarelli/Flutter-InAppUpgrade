@@ -60,13 +60,13 @@ class UpgradeManager {
     });
   }
 
-  void checkForUpdates() async {
+  Future<void> checkForUpdates() async {
     if (status == UpgradeStatus.loadingLocalConfig ||
         status == UpgradeStatus.dismissed) return;
 
     state.updateUpgradeStatus(status: UpgradeStatus.checking);
 
-    Client().get(
+    await Client().get(
       Uri.parse(_url),
       headers: {'Content-Type': 'application/json;charset=utf-8'},
     ).then((response) {
