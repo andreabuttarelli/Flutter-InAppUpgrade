@@ -30,7 +30,7 @@ class UpgradePlugin : FlutterPlugin, MethodCallHandler, ActivityAware {
   private lateinit var activity: Activity
 
   override fun onAttachedToEngine(flutterPluginBinding: FlutterPlugin.FlutterPluginBinding) {
-    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "io.verse.upgrade/in_app_upgrade")
+    channel = MethodChannel(flutterPluginBinding.binaryMessenger, "io.verse.upgrade_manager/in_app_upgrade")
     channel.setMethodCallHandler(this)
     context = flutterPluginBinding.applicationContext
   }

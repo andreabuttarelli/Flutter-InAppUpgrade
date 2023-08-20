@@ -1,4 +1,4 @@
-#include "include/upgrade/upgrade_plugin.h"
+#include "include/upgrade_manager/upgrade_plugin.h"
 
 #include <flutter_linux/flutter_linux.h>
 #include <gtk/gtk.h>

@@ -21,7 +21,7 @@ list(APPEND PLUGIN_SOURCES
 # Define the plugin library target. Its name must not be changed (see comment
 # on PLUGIN_NAME above).
 add_library(${PLUGIN_NAME} SHARED
-  "include/upgrade/upgrade_plugin_c_api.h"
+  "include/upgrade_manager/upgrade_plugin_c_api.h"
   "upgrade_plugin_c_api.cpp"
   ${PLUGIN_SOURCES}
 )

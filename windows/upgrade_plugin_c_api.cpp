@@ -1,4 +1,4 @@
-#include "include/upgrade/upgrade_plugin_c_api.h"
+#include "include/upgrade_manager/upgrade_plugin_c_api.h"
 
 #include <flutter/plugin_registrar_windows.h>
 

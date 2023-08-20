@@ -1,19 +1,19 @@
-
 import 'dart:io';
 
 import 'package:flutter/foundation.dart';
-import 'package:upgrade/core/installer.dart';
-import 'package:upgrade/core/upgrade_state_change_notifier.dart';
-import 'package:upgrade/models/upgrade_status.dart';
+import 'package:upgrade_manager/core/installer.dart';
+import 'package:upgrade_manager/core/upgrade_state_change_notifier.dart';
+import 'package:upgrade_manager/models/upgrade_status.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class MacOSAppStoreInstallerInitializer extends InstallInitializer {
-
   @override
   String get identifier => "macos_app_store";
 
   @override
-  Installer init({required UpgradeStateChangeNotifier state, required Map<String, dynamic> data}) {
+  Installer init(
+      {required UpgradeStateChangeNotifier state,
+      required Map<String, dynamic> data}) {
     return MacOSAppStoreInstaller(
       state: state,
       appId: data['app_id'],
@@ -22,7 +22,6 @@ class MacOSAppStoreInstallerInitializer extends InstallInitializer {
 }
 
 class MacOSAppStoreInstaller extends Installer {
-
   final String appId;
 
   MacOSAppStoreInstaller({
@@ -34,15 +33,17 @@ class MacOSAppStoreInstaller extends Installer {
   bool hasDownload() => false;
 
   @override
-  void download({
-    String? url,
-    File? file,
-    void Function(int received, int total, bool failed)? onReceiveProgress,
-    void Function()? onDone}) {}
+  void download(
+      {String? url,
+      File? file,
+      void Function(int received, int total, bool failed)? onReceiveProgress,
+      void Function()? onDone}) {}
 
   @override
   Future<bool> install() async {
-    if (status != UpgradeStatus.available) { return false; }
+    if (status != UpgradeStatus.available) {
+      return false;
+    }
 
     state.updateUpgradeStatus(status: UpgradeStatus.installing);
     return _openAppStore();

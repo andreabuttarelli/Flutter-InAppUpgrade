@@ -1,6 +1,5 @@
-
 import 'package:flutter/material.dart';
-import 'package:upgrade/upgrade.dart';
+import 'package:upgrade_manager/upgrade.dart';
 
 void main() {
   runApp(const MyApp());
@@ -25,13 +24,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
   void initState() {
     super.initState();
     UpgradeManager.instance.init(
       url: "http://localhost:8000/appcast/latest",
-      currentVersionPath: "assets/version/version.json",
+      currentAppVersion: "0.0.1",
     );
   }
 
@@ -48,13 +46,15 @@ class _HomePageState extends State<HomePage> {
           Align(
             alignment: Alignment.topLeft,
             child: CustomUpgradeView(
-              builder: (context, state) => _buildAppcastItemInfo(title: "Upgrade Current Version", item: state.current),
+              builder: (context, state) => _buildAppcastItemInfo(
+                  title: "Upgrade Current Version", item: state.current),
             ),
           ),
           Align(
             alignment: Alignment.bottomLeft,
             child: CustomUpgradeView(
-              builder: (context, state) => _buildAppcastItemInfo(title: "Upgrade Latest Version", item: state.latest),
+              builder: (context, state) => _buildAppcastItemInfo(
+                  title: "Upgrade Latest Version", item: state.latest),
             ),
           ),
           Align(
@@ -81,7 +81,10 @@ class _HomePageState extends State<HomePage> {
                     padding: const EdgeInsets.only(top: 16),
                     child: SizedBox(
                       width: 256,
-                      child: LinearProgressIndicator(value: progress, minHeight: 8,),
+                      child: LinearProgressIndicator(
+                        value: progress,
+                        minHeight: 8,
+                      ),
                     ),
                   ),
                 ],
@@ -101,7 +104,8 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ),
                 GestureDetector(
-                  onTap: () => UpgradeManager.instance.download(onReceiveProgress: (received, total, _) {
+                  onTap: () => UpgradeManager.instance.download(
+                      onReceiveProgress: (received, total, _) {
                     setState(() {
                       progress = received / total;
                     });
@@ -128,7 +132,8 @@ class _HomePageState extends State<HomePage> {
 
   Widget _buildAppcastItemInfo({required String title, AppcastItem? item}) {
     if (item == null) {
-      return Text("$title: null", style: const TextStyle(fontWeight: FontWeight.bold));
+      return Text("$title: null",
+          style: const TextStyle(fontWeight: FontWeight.bold));
     }
     return Column(
       mainAxisSize: MainAxisSize.min,

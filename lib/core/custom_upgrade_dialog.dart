@@ -1,11 +1,9 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:upgrade/core/upgrade_manager.dart';
-import 'package:upgrade/core/upgrade_state_change_notifier.dart';
+import 'package:upgrade_manager/core/upgrade_manager.dart';
+import 'package:upgrade_manager/core/upgrade_state_change_notifier.dart';
 
 class CustomUpgradeDialog extends StatelessWidget {
-
   final Widget Function(BuildContext context, dynamic releaseNotes) builder;
 
   const CustomUpgradeDialog({
@@ -28,6 +26,4 @@ class CustomUpgradeDialog extends StatelessWidget {
       ),
     );
   }
-
-
 }

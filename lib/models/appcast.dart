@@ -1,4 +1,3 @@
-
 /// The [Appcast] class is an RSS feed like struct with one channel that has
 /// a collection of items that each describe one app version.
 ///
@@ -6,7 +5,7 @@
 ///     https://sparkle-project.org/documentation/publishing/
 ///
 
-import 'package:upgrade/models/appcast_item.dart';
+import 'package:upgrade_manager/models/appcast_item.dart';
 
 class Appcast {
   List<AppcastItem> items;
@@ -16,7 +15,9 @@ class Appcast {
   });
 
   AppcastItem? best() {
-    if (items.isEmpty) { return null; }
+    if (items.isEmpty) {
+      return null;
+    }
 
     AppcastItem? best;
     for (var item in items) {
@@ -35,11 +36,11 @@ class Appcast {
   }
 
   factory Appcast.fromJson(List<Map<String, dynamic>> json) {
-    return Appcast(items: json.map((item) => AppcastItem.fromJson(item)).toList());
+    return Appcast(
+        items: json.map((item) => AppcastItem.fromJson(item)).toList());
   }
 
   List<Map<String, dynamic>> toJson() {
     return items.map((item) => item.toJson()).toList();
   }
 }
-

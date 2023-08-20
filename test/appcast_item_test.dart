@@ -1,11 +1,9 @@
-
 import 'dart:convert';
 
 import 'package:flutter_test/flutter_test.dart';
-import 'package:upgrade/models/appcast_item.dart';
+import 'package:upgrade_manager/models/appcast_item.dart';
 
 void main() {
-
   test("Test string parse is Correct.", () {
     final time = DateTime.now();
     final jsonStr = '''

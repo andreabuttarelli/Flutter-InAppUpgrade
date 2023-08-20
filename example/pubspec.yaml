@@ -18,7 +18,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  upgrade:
+  upgrade_manager:
     # When depending on this package from a real application you should use:
     #   upgrade: ^x.y.z
     # See https://dart.dev/tools/pub/dependencies#version-constraints

@@ -1,4 +1,4 @@
-library upgrade;
+library upgrade_manager;
 
 export 'package:version/version.dart';
 

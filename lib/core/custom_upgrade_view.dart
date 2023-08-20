@@ -1,12 +1,11 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:upgrade/core/upgrade_manager.dart';
-import 'package:upgrade/core/upgrade_state_change_notifier.dart';
+import 'package:upgrade_manager/core/upgrade_manager.dart';
+import 'package:upgrade_manager/core/upgrade_state_change_notifier.dart';
 
 class CustomUpgradeView extends StatelessWidget {
-
-  final Widget Function(BuildContext context, UpgradeStateChangeNotifier state) builder;
+  final Widget Function(BuildContext context, UpgradeStateChangeNotifier state)
+      builder;
 
   const CustomUpgradeView({
     super.key,

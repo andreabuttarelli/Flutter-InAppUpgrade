@@ -5,7 +5,7 @@ import StoreKit
 public class SwiftUpgradePlugin: NSObject, FlutterPlugin {
     
     public static func register(with registrar: FlutterPluginRegistrar) {
-        let channel = FlutterMethodChannel(name: "io.verse.upgrade/in_app_upgrade", binaryMessenger: registrar.messenger())
+        let channel = FlutterMethodChannel(name: "io.verse.upgrade_manager/in_app_upgrade", binaryMessenger: registrar.messenger())
         let instance = SwiftUpgradePlugin()
         registrar.addMethodCallDelegate(instance, channel: channel)
         
