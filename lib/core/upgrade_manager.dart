@@ -66,10 +66,11 @@ class UpgradeManager {
 
     state.updateUpgradeStatus(status: UpgradeStatus.checking);
 
-    await Client().get(
+    final response = await Client().get(
       Uri.parse(_url),
       headers: {'Content-Type': 'application/json;charset=utf-8'},
-    ).then((response) {
+    );
+    try {
       if (response.statusCode != 200) {
         state.updateUpgradeStatus(status: UpgradeStatus.error);
         debugPrint("[UpgradeManager] Download Appcast from $_url error.");
@@ -86,10 +87,10 @@ class UpgradeManager {
       } else {
         state.updateUpgradeStatus(status: UpgradeStatus.upToDate);
       }
-    }).catchError((e) {
-      Logger.printError(e);
+    } catch (e) {
+      Logger.printError('$e');
       state.updateUpgradeStatus(status: UpgradeStatus.error);
-    });
+    }
   }
 
   void download({
