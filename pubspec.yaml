@@ -1,6 +1,6 @@
 name: upgrade_manager
 description: A Flutter plugin for prompting and help users to upgrade when there is a newer version of this app in the app store or server repository.
-version: 0.0.9
+version: 0.0.10
 
 homepage: https://github.com/Flutter-Chore/Flutter-InAppUpgrade
 
@@ -14,7 +14,7 @@ dependencies:
   plugin_platform_interface: ^2.0.2
   provider: ^6.0.5
   version: ^3.0.2
-  http: ^1.0.0
+  http: ^0.13.0
   path: ^1.8.2
   path_provider: ^2.0.13
   url_launcher: ^6.1.10
